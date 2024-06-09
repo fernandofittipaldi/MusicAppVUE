@@ -4,7 +4,9 @@
     <button @click="searchMusicians">Buscar Músicos</button>
     <ul>
       <li v-for="musician in musicians" :key="musician.id">
-        {{ musician }}
+        <p>Nombre: {{ musician.name }}</p>
+        <p>Apellido: {{ musician.lastName }}</p>
+        <p>Email: {{ musician.email }}</p>
       </li>
     </ul>
   </div>
@@ -19,7 +21,8 @@ const musicians = ref([]);
 const searchMusicians = async () => {
   try {
     const response = await axios.get('http://localhost:8080/musicians');
-    musicians.value = response.data;
+    musicians.value = response.data.message;
+    console.log(musicians.value);
   } catch (error) {
     console.error('Error buscando músicos:', error);
   }
@@ -42,4 +45,13 @@ button {
 button:hover {
   background-color: #555;
 }
+
+li {
+  margin-bottom: 10px;
+}
+
+p {
+  margin: 0;
+}
+
 </style>

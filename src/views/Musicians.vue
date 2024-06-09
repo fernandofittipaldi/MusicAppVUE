@@ -1,9 +1,9 @@
 <template>
   <div>
     <h1>Músicos</h1>
-    <button @click="searchMusicians">Buscar Músicos</button>
+    <button v-on:click="searchMusicians">Buscar Músicos</button>
     <ul>
-      <li v-for="musician in musicians" :key="musician.id">
+      <li v-for="musician in musicians" :key="musician.name">
         <p>Nombre: {{ musician.name }}</p>
         <p>Apellido: {{ musician.lastName }}</p>
         <p>Email: {{ musician.email }}</p>

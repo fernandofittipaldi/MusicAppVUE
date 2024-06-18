@@ -14,13 +14,15 @@
 
 <script setup>
 import { onMounted, ref } from 'vue';
-import axios from 'axios';
+//import axios from 'axios';
+import api from '../../utils/api.js';
+
 
 const musicians = ref([]);
 
 const searchMusicians = async () => {
   try {
-    const response = await axios.get('http://localhost:8080/musicians');
+    const response = await api.get('/musicians');
     musicians.value = response.data.message;
     console.log(musicians.value);
   } catch (error) {

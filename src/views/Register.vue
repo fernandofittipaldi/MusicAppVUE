@@ -11,12 +11,12 @@
         <input id="lastName" v-model="musician.lastName" type="text" required />
       </div>
       <div>
-        <label for="password">Password:</label>
-        <input id="password" v-model="musician.password" type="password" required />
-      </div>
-      <div>
         <label for="email">Email:</label>
         <input id="email" v-model="musician.email" type="email" required />
+      </div>
+      <div>
+        <label for="password">Password:</label>
+        <input id="password" v-model="musician.password" type="password" required />
       </div>
       <div>
         <label for="city">Ciudad:</label>

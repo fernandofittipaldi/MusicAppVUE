@@ -1,11 +1,27 @@
 <template>
-  <nav>
-    <ul>
-      <li><router-link to="/">Inicio</router-link></li>
-      <li><router-link to="/login">Login</router-link></li>
-      <li><router-link to="/musicians">Músicos</router-link></li>
-      <li><router-link to="/register">Registrarse</router-link></li>
-    </ul>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="/">MusicApp</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <router-link class="nav-link" to="/">Inicio</router-link>
+          </li>
+          <li class="nav-item">
+            <router-link class="nav-link" to="/login">Login</router-link>
+          </li>
+          <li class="nav-item">
+            <router-link class="nav-link" to="/musicians">Músicos</router-link>
+          </li>
+          <li class="nav-item">
+            <router-link class="nav-link" to="/register">Registrarse</router-link>
+          </li>
+        </ul>
+      </div>
+    </div>
   </nav>
 </template>
 
@@ -14,29 +30,15 @@
 </script>
 
 <style scoped>
-nav {
-  background-color: #444;
-  color: white;
-  padding: 10px 0;
+.navbar {
+  background-color: #444 !important;
 }
 
-nav ul {
-  list-style: none;
-  padding: 0;
-  display: flex;
-  justify-content: center;
+.navbar-nav .nav-link {
+  color: white !important;
 }
 
-nav li {
-  margin: 0 15px;
-}
-
-nav a {
-  color: white;
-  text-decoration: none;
-}
-
-nav a:hover {
-  text-decoration: underline;
+.navbar-nav .nav-link:hover {
+  color: gray !important;
 }
 </style>

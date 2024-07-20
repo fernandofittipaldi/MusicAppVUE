@@ -1,20 +1,20 @@
 <template>
-  <div class="edit-profile-container">
+  <div class="container mt-4">
     <h1>Editar Perfil</h1>
     <form @submit.prevent="updateProfile">
-      <div>
-        <label for="name">Nombre:</label>
-        <input v-model="form.name" id="name" type="text" />
+      <div class="mb-3">
+        <label for="name" class="form-label">Nombre:</label>
+        <input v-model="form.name" id="name" type="text" class="form-control" required />
       </div>
-      <div>
-        <label for="lastName">Apellido:</label>
-        <input v-model="form.lastName" id="lastName" type="text" />
+      <div class="mb-3">
+        <label for="lastName" class="form-label">Apellido:</label>
+        <input v-model="form.lastName" id="lastName" type="text" class="form-control" required />
       </div>
-      <div>
-        <label for="email">Email:</label>
-        <input v-model="form.email" id="email" type="email" />
+      <div class="mb-3">
+        <label for="email" class="form-label">Email:</label>
+        <input v-model="form.email" id="email" type="email" class="form-control" required />
       </div>
-      <button type="submit">Actualizar</button>
+      <button type="submit" class="btn btn-primary">Actualizar</button>
     </form>
   </div>
 </template>
@@ -36,9 +36,9 @@ const route = useRoute();
 const updateProfile = async () => {
   try {
     const token = localStorage.getItem('token');
-    console.log(token);
+    //console.log(token);
     const userId = route.params.id;
-    console.log(userId);
+    //console.log(userId);
     await axios.put(`http://localhost:8080/musicians/${userId}`, form.value, {
       headers: {
         Authorization: `Bearer ${token}`,

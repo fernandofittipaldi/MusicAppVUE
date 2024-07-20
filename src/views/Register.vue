@@ -1,36 +1,40 @@
 <template>
-  <div>
+  <div class="container mt-4">
     <h1>Registrarse</h1>
-    <form @submit.prevent="registerMusician">
-      <div>
-        <label for="name">Nombre:</label>
-        <input id="name" v-model="musician.name" type="text" required />
+    <form @submit.prevent="registerMusician" class="needs-validation" novalidate>
+      <div class="mb-3">
+        <label for="name" class="form-label">Nombre:</label>
+        <input id="name" v-model="musician.name" type="text" class="form-control" required />
+        <div class="invalid-feedback">Por favor, ingrese su nombre.</div>
       </div>
-      <div>
-        <label for="lastName">Apellido:</label>
-        <input id="lastName" v-model="musician.lastName" type="text" required />
+      <div class="mb-3">
+        <label for="lastName" class="form-label">Apellido:</label>
+        <input id="lastName" v-model="musician.lastName" type="text" class="form-control" required />
+        <div class="invalid-feedback">Por favor, ingrese su apellido.</div>
       </div>
-      <div>
-        <label for="email">Email:</label>
-        <input id="email" v-model="musician.email" type="email" required />
+      <div class="mb-3">
+        <label for="email" class="form-label">Email:</label>
+        <input id="email" v-model="musician.email" type="email" class="form-control" required />
+        <div class="invalid-feedback">Por favor, ingrese un email válido.</div>
       </div>
-      <div>
-        <label for="password">Password:</label>
-        <input id="password" v-model="musician.password" type="password" required />
+      <div class="mb-3">
+        <label for="password" class="form-label">Password:</label>
+        <input id="password" v-model="musician.password" type="password" class="form-control" required />
+        <div class="invalid-feedback">Por favor, ingrese una contraseña.</div>
       </div>
-      <div>
-        <label for="city">Ciudad:</label>
-        <input id="city" v-model="musician.city" type="city" required />
+      <div class="mb-3">
+        <label for="city" class="form-label">Ciudad:</label>
+        <input id="city" v-model="musician.city" type="text" class="form-control" required />
+        <div class="invalid-feedback">Por favor, ingrese su ciudad.</div>
       </div>
-      <div>
-        <label for="experience">Experiencia:</label>
-        <input id="experience" v-model="musician.experience" type="number" required />
+      <div class="mb-3">
+        <label for="experience" class="form-label">Experiencia:</label>
+        <input id="experience" v-model="musician.experience" type="number" class="form-control" required />
+        <div class="invalid-feedback">Por favor, ingrese su experiencia.</div>
       </div>
-      <button type="submit">Registrar</button>
+      <button type="submit" class="btn btn-primary">Registrar</button>
     </form>
-
   </div>
-
 </template>
 
 <script setup>
@@ -66,37 +70,5 @@ const registerMusician = async () => {
 </script>
 
 <style scoped>
-
-form {
-  display: flex;
-  flex-direction: column;
-}
-
-div {
-  margin-bottom: 10px;
-}
-
-label {
-  margin-bottom: 5px;
-}
-
-input, select {
-  padding: 8px;
-  width: 200px;
-}
-
-button {
-  margin-top: 10px;
-  padding: 10px 20px;
-  background-color: #444;
-  color: white;
-  border: none;
-  cursor: pointer;
-}
-
-button:hover {
-  background-color: #555;
-}
-
 
 </style>

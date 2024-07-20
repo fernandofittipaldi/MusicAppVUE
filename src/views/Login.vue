@@ -34,7 +34,7 @@ const handleLogin = async () => {
     });
     if (response.data.success) {
       const token = response.data.token;
-      console.log(token);
+      //console.log(token);
       localStorage.setItem('token', token);
       router.push('/dashboard');
     } else {

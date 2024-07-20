@@ -1,24 +1,33 @@
 <template>
-  <div>
+  <div class="container mt-4">
     <h1>Mis Datos</h1>
     
     <div v-if="user">
-      <p>Nombre: {{ user.name }}</p>
-      <p>Apellido: {{ user.lastName }}</p>
-      <p>User: {{ user.email }}</p>
+      <p><strong>Nombre:</strong> {{ user.name }}</p>
+      <p><strong>Apellido:</strong> {{ user.lastName }}</p>
+      <p><strong>User:</strong> {{ user.email }}</p>
       
-      <router-link :to="'/edit-profile/' + user.id">Editar Perfil</router-link>
-      <button class="delete-button" @click="showDeleteModal">Eliminar Cuenta</button>
-
-      <button @click="logout">Cerrar sesión</button>
+      <router-link :to="'/edit-profile/' + user.id" class="btn btn-secondary mb-3">Editar Perfil</router-link>
+      <button class="btn btn-danger mb-3" @click="showDeleteModal">Eliminar Cuenta</button>
+      <button class="btn btn-warning mb-3" @click="logout">Cerrar sesión</button>
     </div>
   </div>
 
-  <div v-if="isDeleteModalVisible" class="modal-overlay">
-    <div class="modal">
-      <p>¿Está seguro de que desea eliminar su cuenta?</p>
-      <button @click="deleteProfile" class="confirm-button">Sí</button>
-      <button @click="hideDeleteModal" class="cancel-button">No</button>
+  <div v-if="isDeleteModalVisible" class="modal fade show" tabindex="-1" role="dialog" style="display: block;" aria-modal="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Confirmación</h5>
+          <button type="button" class="btn-close" aria-label="Close" @click="hideDeleteModal"></button>
+        </div>
+        <div class="modal-body">
+          <p>¿Está seguro de que desea eliminar su cuenta?</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" @click="deleteProfile">Sí</button>
+          <button type="button" class="btn btn-secondary" @click="hideDeleteModal">No</button>
+        </div>
+      </div>
     </div>
   </div>
 
@@ -27,7 +36,6 @@
 <script setup>
 import { ref, onMounted } from 'vue';
 import { useRouter } from 'vue-router';
-//import axios from 'axios';
 import api from '../../utils/api.js';
 import EditProfile from './EditProfile.vue';
 
@@ -56,7 +64,7 @@ const fetchUserData = async () => {
     //   },
     // });
 
-    console.log(user.value);
+  // console.log(user.value);
   // } catch (error) {
   //   console.error('Error fetching user data:', error);
   // }
@@ -101,63 +109,17 @@ onMounted(() => {
 
 <style scoped>
 
-.delete-button {
-  background-color: red;
-  color: white;
-  padding: 10px 20px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-}
-
-.delete-button:hover {
-  background-color: darkred;
-}
-
-.modal-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
 .modal {
-  background-color: white;
-  padding: 20px;
-  border-radius: 5px;
-  text-align: center;
+  display: block;
+  background-color: rgba(0, 0, 0, 0.5);
 }
 
-.confirm-button {
-  background-color: red;
-  color: white;
-  padding: 10px 20px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  margin-right: 10px;
-}
-
-.confirm-button:hover {
-  background-color: darkred;
-}
-
-.cancel-button {
-  background-color: gray;
-  color: white;
-  padding: 10px 20px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-}
-
-.cancel-button:hover {
-  background-color: darkgray;
+.modal-dialog {
+  margin: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
 }
 
 </style>
